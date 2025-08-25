@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  neo4j:
+    image: neo4j:5.21
+    container_name: neo4j
+    environment:
+      NEO4J_AUTH: "neo4j/your_neo4j_password"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+  api:
+    image: python:3.11-slim
+    container_name: contracts_api
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      NEO4J_URI: "bolt://neo4j:7687"
+      NEO4J_USER: "neo4j"
+      NEO4J_PASSWORD: "password"
+      HF_API_TOKEN: ${HF_API_TOKEN}
+      HF_SUMMARIZATION_MODEL: "facebook/bart-large-cnn"
+      EMBEDDINGS_MODEL: "sentence-transformers/all-MiniLM-L6-v2"
+      DEVICE: "cpu"
+      API_HOST: "0.0.0.0"
+      API_PORT: "8000"
+    command: bash -lc "pip install --no-cache-dir -r requirements.txt && uvicorn src.api.main:app --host 0.0.0.0 --port 8000"
+    depends_on:
+      - neo4j
+    ports:
+      - "8000:8000"
+
+volumes:
+  neo4j_data:

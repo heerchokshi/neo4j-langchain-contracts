@@ -1,0 +1,32 @@
+# Core
+python-dotenv==1.0.1
+pandas==2.2.2
+numpy==1.26.4
+scikit-learn==1.5.2
+
+# LangChain (modern split)
+langchain==0.2.12
+langchain-community==0.2.11
+langchain-huggingface==0.0.3
+
+# HF + ML
+transformers==4.44.2
+huggingface-hub==0.23.4
+torch==2.6.0
+sentence-transformers==2.7.0
+accelerate==0.33.0
+
+# Vector store
+faiss-cpu==1.8.0.post1
+
+# Neo4j
+neo4j==5.21.0
+
+# API/UI
+fastapi==0.111.0
+uvicorn==0.30.5
+streamlit==1.36.0
+requests==2.32.3
+
+# Utils
+tqdm==4.66.5

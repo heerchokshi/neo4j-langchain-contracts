@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -205,3 +206,27 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+=======
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environments
+.env
+.env.example
+venv/
+.venv/
+
+# macOS
+.DS_Store
+
+# Streamlit
+.streamlit/
+
+# FAISS persistence
+faiss_index/
+*.faiss
+*.pkl
+>>>>>>> 46458d2 (Init: LangChain + HF + Neo4j contracts assistant)
